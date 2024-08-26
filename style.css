@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+:root {
+  font-family: 'Open Sans', 'Noto Sans', sans-serif;
+  font-size: 2rem;
+}
+
+body {
+  background-color: rgb(60, 77, 80);
+}
+
+
+.button.animateChar {
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+
+  --_transition-time: 200ms;
+  --_each-delay: 50ms;
+  --_each-time: 500ms;
+  --_character-count: 6;
+  --_time-to-finish: calc((var(--_character-count) - 1) * var(--_each-delay) + var(--_each-time));
+
+  padding: 0.3rem 1rem;
+  background-color: #0ff;
+  color: #000;
+  border: 2px solid, #333;
+  font: inherit;
+  font-weight: 600;
+  transition:
+    box-shadow var(--_transition-time),
+    translate var(--_transition-time),
+    background-color var(--_transition-time),
+    border-color var(--_transition-time),
+    border-width var(--_transition-time),
+    border-radius var(--_transition-time),
+    color 0s var(--_time-to-finish);
+  cursor: pointer;
+
+  user-select: none;
+}
+
+.button.animateChar:hover {
+  box-shadow: -0.3rem 0.3rem 0.3rem rgb(100, 0, 0);
+  translate: 0.15rem -0.15rem;
+  background-color: #f0f;
+  border-color: rgb(255, 30, 70);
+  border-width: 5px;
+  border-radius: 0.3rem;
+  color: #fff;
+  transition:
+    box-shadow var(--_transition-time),
+    translate var(--_transition-time),
+    background-color var(--_transition-time),
+    border-color var(--_transition-time),
+    border-width var(--_transition-time),
+    border-radius var(--_transition-time),
+    color 0s var(--_time-to-finish);
+}
+.button.animateChar:active {
+  background-color: #c0d;
+  border-color: rgb(170, 20, 60);
+  translate: 0 0;
+  box-shadow: none;
+}
+.button.animateChar:active .char {
+  color: #eef !important;
+}
+
+.char.in {
+  animation: colorTextIn var(--_each-time) linear calc(var(--_i) * var(--_each-delay)) forwards;
+}
+.char.out {
+  animation: colorTextOut var(--_each-time) linear calc(var(--_i) * var(--_each-delay)) forwards;
+}
+
+@keyframes colorTextIn {
+  0% { color: #000; }
+  14% { color: #f00; }
+  28% { color: #0f0; }
+  42% { color: #00f; }
+
+  50% {
+    translate: 0 -0.2rem;
+    scale: 1.2;
+  }
+
+  57% { color: #ff0; }
+  71% { color: #f0f; }
+  85% { color: #0ff; }
+  100% { color: #fff; }
+}
+@keyframes colorTextOut {
+  0% { color: #fff; }
+  14% { color: #0ff; }
+  28% { color: #f0f; }
+  42% { color: #ff0; }
+
+  50% {
+    translate: 0 0.1rem;
+    scale: 0.9;
+  }
+
+  57% { color: #00f; }
+  71% { color: #0f0; }
+  85% { color: #f00; }
+  100% { color: #000; }
+}
+
+
+.svg {
+  margin: 10px;
+  cursor: pointer;
+  vertical-align: top;
+}
